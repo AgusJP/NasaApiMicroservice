@@ -2,15 +2,15 @@ package com.prueba.apinasa.controller;
 
 import com.prueba.apinasa.dto.AsteroidDTO;
 import com.prueba.apinasa.env.Environment;
+import com.prueba.apinasa.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 import com.prueba.apinasa.service.AsteroidService;
-import org.springframework.web.util.UriComponentsBuilder;
+
 
 import javax.json.*;
 import java.io.StringReader;
@@ -26,6 +26,10 @@ public class AsteroidsController {
 
     @GetMapping("/asteroids")
     public List<AsteroidDTO> getAsteroids(@RequestParam("days") int days) {
+
+        if (days < 1 || days > 7) {
+            throw new BadRequestException("The value of days parameter must be between 1 and 7");
+        }
 
         //Json as response to api request
         ResponseEntity<String> json = asteroidService.fetchAsteroidData(days);

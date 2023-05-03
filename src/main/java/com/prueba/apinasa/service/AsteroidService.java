@@ -96,6 +96,7 @@ public class AsteroidService {
      * @return asteroidDTO
      */
     public AsteroidDTO extractAsteroidDTO(JsonValue asteroid) {
+
         boolean potentially_hazardous = asteroid.asJsonObject().getBoolean(Environment.POTENTIALLY_HAZARDOUS);
         //Filter asteroids by potentially hazardous
         if (!potentially_hazardous) {
@@ -103,10 +104,13 @@ public class AsteroidService {
         }
         //Get required parameters from Api
         String name = asteroid.asJsonObject().getJsonString(Environment.NAME).getString();
+
         String speed = asteroid.asJsonObject().getJsonArray(Environment.APPROACH_DATA)
                 .getJsonObject(0).getJsonObject(Environment.RELATIVE_VELOCITY).getJsonString(Environment.KILOMETER_HOUR).getString();
+
         String date = asteroid.asJsonObject().getJsonArray(Environment.APPROACH_DATA)
                 .getJsonObject(0).getJsonString(Environment.APPROACH_DATE).getString();
+
         String orbitingPlanet = asteroid.asJsonObject().getJsonArray(Environment.APPROACH_DATA)
                 .getJsonObject(0).getJsonString(Environment.ORBITING_BODY).getString();
 
