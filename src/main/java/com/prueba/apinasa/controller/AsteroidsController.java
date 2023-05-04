@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.prueba.apinasa.service.AsteroidService;
 
-
 import javax.json.*;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -27,10 +26,9 @@ public class AsteroidsController {
     @GetMapping("/asteroids")
     public List<AsteroidDTO> getAsteroids(@RequestParam("days") int days) {
 
-        if (days < 1 || days > 7) {
+       if (days < 1 || days > 7) {
             throw new BadRequestException("The value of days parameter must be between 1 and 7");
         }
-
         //Json as response to api request
         ResponseEntity<String> json = asteroidService.fetchAsteroidData(days);
 
