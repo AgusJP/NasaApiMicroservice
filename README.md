@@ -19,10 +19,11 @@ The test consists of make a request to the NASA API and return a response extrac
 
 ## Technologies<a name="id3" ></a>
 
-- Java - Spring Boot
-- Maven
-- JUnit
-- Mockito
+![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Mockito](https://img.shields.io/badge/-Mockito-EE0000?style=for-the-badge&logo=mockito&logoColor=white)
+![JUnit](https://img.shields.io/badge/-JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+![Maven](https://img.shields.io/badge/-Maven-C71A36?style=for-the-badge&logo=apache%20maven&logoColor=white)
+
 
 ## Installation<a name="id2" ></a>
 Just clone the repository, then install the maven dependencies and start the server.
