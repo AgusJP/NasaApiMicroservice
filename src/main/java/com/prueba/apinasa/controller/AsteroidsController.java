@@ -23,6 +23,10 @@ public class AsteroidsController {
     @Autowired
     AsteroidService asteroidService;
 
+    public AsteroidsController(AsteroidService asteroidService) {
+        this.asteroidService = asteroidService;
+    }
+
     @GetMapping("/asteroids")
     public List<AsteroidDTO> getAsteroids(@RequestParam("days") int days) {
 
@@ -40,7 +44,7 @@ public class AsteroidsController {
         List<AsteroidDTO> asteroidsDTOs = new ArrayList<>();
 
         //The jsonObject is traversed extracting the asteroid transformed data and added to the asteriodsDTO list
-        //The first loop goes through the dates and the second the asteroids of each date
+        //The first loop goes through the dates (days) that contain the list of asteroids and the second loop extract the asteroids of each date
         for (int i = 0; i < days; i++) {
             JsonValue asteroidsArrayByDate = jsonObject.getJsonObject(Environment.NEAR_OBJECTS)
                     .getJsonArray(AsteroidService.getEndDate(i));

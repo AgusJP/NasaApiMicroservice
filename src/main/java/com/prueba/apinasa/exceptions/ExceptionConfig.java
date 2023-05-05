@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ControllerAdvice(annotations = RestController.class)
 public class ExceptionConfig {
 
-   @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorDTO> badRequestException(Exception e) {
         ErrorDTO error = new ErrorDTO("500 - Internal Server Error", e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);

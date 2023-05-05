@@ -102,7 +102,7 @@ public class AsteroidService {
         if (!potentially_hazardous) {
             return null;
         }
-        //Get required parameters from Api
+        //Get required fields from Api
         String name = asteroid.asJsonObject().getJsonString(Environment.NAME).getString();
 
         String speed = asteroid.asJsonObject().getJsonArray(Environment.APPROACH_DATA)
